@@ -1,0 +1,4 @@
+0. The board can be between 3x3 and 9x9 as defined by global variables DIM_MIN and DIM)MAX
+1. Represented by a 2D array of integers
+2. The greet() function
+3. init(), draw(), move(), and won()

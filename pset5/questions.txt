@@ -1,0 +1,18 @@
+0.  "An obscure term ostensibly referring to a lung disease caused by silica dust, sometimes cited as one of the longest words in the English language." [dictionary.com]
+1.  Get resource usage - used to determine resource usage of either calling process, process children, or thread.
+    Resource usage is typically measured as user CPU time or system CPU time in seconds plus milliseconds.
+2.  16 - 2 structs and 14 long variable types.
+3.  Calculating by value would involve copying the variables, and since [struct rusage] has 16 members it requires quite a bit of
+    memory, code size and cpu usage. By using references instead, memory usage, code size and cpu usage are all reduced.
+4.  First, main declares the variables "index", "misspellings" and "words", as well as an array for storing a word, "word[LENGTH+1]".
+    Next, the main for loop begins. Here, the loop starts with the first character in the text document, and iterates per character until the end of the file.
+    The program checks if the character is a letter or apostrophe (apostrophe must not be the start of a word), in which case it will be stored in the "word" array at the position "index".
+    Index is increased by one for each character of a word. Various checks are made e.g. if the size of index is greater than the maximum length (45), or there is a number in the word,
+    the rest of the word is discarded and a check for a new word is initialised (index = 0). If the array does not contain any numbers, does not start with an apostrophe, 
+    and is less than the maximum length of a word, it must therefore be a proper word and is given a null terminator "\0". The word is then checked for mistakes using the check function,
+    which compares the word in a dictionary file. If it is not found in the dictionary, the word is assumed to be misspelled, printed out and recorded.
+    The checking time is also recorded.
+5.  fgetc is very useful for reading character-by-character eg. it doesn't ignore whitespace, which indicates the end of a word. fscanf reads whole words and ignores whitespace,
+    and may read punctuation marks that may incorrectly read a word as misspelled.
+6.  By setting them as constants, it is ensured that the value that the pointers are pointing at do not change. This safety measure means that the word being read and words in the dictionary
+    cannot be changed. In effect, we want to make sure we are ONLY reading data.
